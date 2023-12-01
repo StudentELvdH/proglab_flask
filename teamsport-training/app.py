@@ -27,30 +27,25 @@ Session(app)
 def index():
     return "Project 1: TODO - deze stap uitwerken"
 
-@app.route("/book/<isbn>", methods=["GET"])
+@app.route("/>", methods=["GET"])
 def book(isbn):
-    #return "TODO: extend with correct ISBN number"
-    
-    # """Book a flight."""
-    # get the book with the right isbn from the database. 
-    # Then pass on that book to the template and have the template render the title, isbn, etc.
-    
+   
     # Get form information.
-    isbn = request.form.get("isbn")
-    try:
-        isbn = str(request.form.get("isbn"))
-    except ValueError:
-        return render_template("error.html", message="Invalid isbn")
+    #isbn = request.form.get("isbn")
+    #try:
+    #    isbn = str(request.form.get("isbn"))
+    #except ValueError:
+    #    return render_template("error.html", message="Invalid isbn")
     # print(isbn)
     
     # Make sure isbn exists-> nu in ORM
-    if Book.query.filter_by(isbn=isbn)
+    #if Book.query.filter_by(isbn=isbn)
     
     # Make sure isbn exists.
-    if db.execute("SELECT * FROM books WHERE isbn = :isbn", {"isbn": isbn}).rowcount == 0:
-        return render_template("error.html", message="No such book with that isbn")
-    db.execute("INSERT INTO books (isbn) VALUES (:isbn)",
-            {"isbn": isbn})
+    #if db.execute("SELECT * FROM books WHERE isbn = :isbn", {"isbn": isbn}).rowcount == 0:
+    #    return render_template("error.html", message="No such exercise with that code")
+    #db.execute("INSERT INTO books (isbn) VALUES (:isbn)",
+    #        {"isbn": isbn})
     db.commit()
-    return render_template("bookpage.html")
+    return render_template("exercise.html")
 

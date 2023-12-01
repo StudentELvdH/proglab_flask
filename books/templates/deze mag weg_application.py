@@ -21,9 +21,9 @@ def book(isbn):
         return render_template("error.html", message="Invalid isbn")
 
     # Make sure isbn exists.
-    if db.execute("SELECT * FROM Book WHERE isbn = :isbn", {"isbn": isbn}).rowcount == 0:
+    if db.execute("SELECT * FROM books WHERE isbn = :isbn", {"isbn": isbn}).rowcount == 0:
         return render_template("error.html", message="No such book with that isbn")
-    db.execute("INSERT INTO Book (name, flight_id) VALUES (:name, :flight_id)",
-            {"name": name, "flight_id": flight_id})
+    db.execute("INSERT INTO books (isbn) VALUES (:isbn)",
+            {"isbn": isbn})
     db.commit()
     return render_template("bookpage.html")
